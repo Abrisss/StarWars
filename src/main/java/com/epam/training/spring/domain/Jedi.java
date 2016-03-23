@@ -2,14 +2,14 @@ package com.epam.training.spring.domain;
 
 public class Jedi {
 
-    private final LightSabre lightsabre;
+    private final LightSabre lightSabre;
 
-    public Jedi() {
-        lightsabre = new LightSabre("Slicer", 10);
+    public Jedi(final LightSabre lightSabre) {
+        this.lightSabre = lightSabre;
     }
 
     public String fight() {
-        return lightsabre.hit();
+        return lightSabre.hit();
     }
 
 }
