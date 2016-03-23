@@ -1,8 +1,7 @@
 package com.epam.training.spring;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.training.spring.domain.Jedi;
 
@@ -12,13 +11,11 @@ import com.epam.training.spring.domain.Jedi;
  */
 public class App {
     public static void main(final String[] args) {
-        // final LightSabre lightSabre = new LightSabre("Slicer", 10);
-        // final Jedi jedi = new Jedi(lightSabre);
+        final AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
-        final BeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
-
-        final Jedi jedi = factory.getBean(Jedi.class);
-
+        final Jedi jedi = context.getBean("OdanUrr", Jedi.class);
         System.out.println(jedi.fight());
+
+        context.close();
     }
 }
